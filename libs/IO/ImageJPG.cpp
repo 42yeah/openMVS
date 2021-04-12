@@ -94,6 +94,10 @@ error_exit(j_common_ptr cinfo)
 {
 	JpegErrorMgr* err_mgr = (JpegErrorMgr*)(cinfo->err);
 
+	char msg[512] = { 0 };
+	(*(cinfo->err->format_message))(cinfo, msg);
+	std::cout << "JPEG error: " << msg << std::endl;
+
 	/* Return control to the setjmp point */
 	longjmp( err_mgr->setjmp_buffer, 1 );
 }

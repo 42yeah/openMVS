@@ -54,9 +54,10 @@ IMAGEPTR Image::OpenImage(const String& fileName)
 
 IMAGEPTR Image::ReadImageHeader(const String& fileName)
 {
+	LOG("loading image path: %s", fileName.c_str());
 	IMAGEPTR pImage(OpenImage(fileName));
 	if (pImage == NULL || FAILED(pImage->ReadHeader())) {
-		LOG("error: failed loading image header");
+		LOG("error: failed loading image header. Ugh! %d, %d", pImage == NULL, FAILED(pImage->ReadHeader()));
 		pImage.Release();
 	}
 	return pImage;

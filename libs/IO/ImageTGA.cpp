@@ -7,6 +7,7 @@
 
 #include "Common.h"
 
+#include <iostream>
 #ifdef _IMAGE_TGA
 #include "ImageTGA.h"
 
